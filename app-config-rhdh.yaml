@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config-rhdh
+  namespace: openshift-devspaces
+  uid: 4b305021-1589-4f3f-98d5-d67c2009e126
+  resourceVersion: '16983902'
+  creationTimestamp: '2023-12-22T11:49:36Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2024-01-19T20:46:25Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:app-config-rhdh.yaml': {}
+data:
+  app-config-rhdh.yaml: |
+    integrations:
+      github:
+        - host: github.com
+          token: ${GITHUB_TOKEN}
+    auth:
+      environment: production
+      providers:
+        oauth2Proxy: {}
+    signInPage: oauth2Proxy
+    enabled:
+      github: false
+      githubOrg: false
+      jenkins: false
+      keycloak: true
+      kubernetes: true
+      ocm: true
+      techdocs: true
+    catalog:
+      providers:
+        keycloakOrg:
+         default:
+           baseUrl: https://keycloak-openshift-devspaces.apps.pocdevhub.lab.psi.pnq2.redhat.com/auth
+           loginRealm: backstage
+           realm: backstage
+           clientId: backstage
+           clientSecret: gBIkCrEwUj0PCKrg6gJ6WreHW81ifK1v   
+      rules:
+        - allow: [API, Component, Group, User, Resource, Location, Template, System] 
+binaryData: {}
